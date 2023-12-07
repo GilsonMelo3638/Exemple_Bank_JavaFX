@@ -1,0 +1,156 @@
+/* Estilo para o contêiner do painel */
+.dashboard {
+    -fx-background-color: #EEEEEE;    /* Cor de fundo */
+}
+
+/* Estilo para o nome do usuário */
+.user_name {
+    -fx-font-size: 2.6em;             /* Tamanho da fonte */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+}
+
+/* Estilo para a etiqueta de data */
+.date_lbl {
+    -fx-text-fill: #AAAAAA;           /* Cor do texto */
+    -fx-font-size: 1.1em;             /* Tamanho da fonte */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+}
+
+/* Estilo para o título da seção */
+.section_title {
+    -fx-font-size: 1.4em;             /* Tamanho da fonte */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+}
+
+/* Estilo para a visualização de contas */
+.accounts_view {
+    -fx-background-color: #FFFFFF;    /* Cor de fundo */
+    -fx-background-radius: 10 0 0 10; /* Raio do canto superior esquerdo */
+    -fx-padding: 10 0 10 0;           /* Preenchimento */
+    -fx-alignment: center;            /* Alinhamento do conteúdo no centro */
+    -fx-border-width: 0 1 0 0;        /* Largura da borda */
+    -fx-border-color: #DDDDDD;        /* Cor da borda */
+    -fx-spacing: 10;                  /* Espaçamento entre elementos */
+}
+
+/* Estilo para uma conta */
+.account {
+    -fx-background-radius: 5;        /* Raio do canto */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 10); /* Efeito de sombra */
+}
+
+.account VBox {
+    -fx-background-color: #FFFFFF;    /* Cor de fundo */
+}
+
+.account Text {
+    -fx-fill: #FFFFFF;                /* Cor do texto */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+    -fx-font-size: 1.5em;             /* Tamanho da fonte */
+}
+
+.account FontAwesomeIconView {
+    -fx-fill: #FFFFFF;                /* Cor do ícone */
+}
+
+.account_gradient {
+    -fx-background-color: linear-gradient(to right, #132A13, #253F25); /* Gradiente de fundo */
+}
+
+.account_balance {
+    -fx-text-fill: #FFFFFF;           /* Cor do texto */
+    -fx-font-family: Calibri;         /* Família da fonte */
+    -fx-font-size: 3em;               /* Tamanho da fonte */
+    -fx-font-weight: bold;            /* Peso da fonte em negrito */
+}
+
+.account_number {
+    -fx-text-fill: #FFFFFF;           /* Cor do texto */
+    -fx-font-family: Calibri;         /* Família da fonte */
+    -fx-font-size: 1.5em;             /* Tamanho da fonte */
+    -fx-text-alignment: center;       /* Alinhamento do texto no centro */
+}
+
+/* Estilo para a visualização resumida de contas */
+.summary_view {
+    -fx-background-color: #FFFFFF;    /* Cor de fundo */
+    -fx-padding: 5 10 5 10;           /* Preenchimento */
+    -fx-spacing: 5;                   /* Espaçamento entre elementos */
+    -fx-alignment: center_left;       /* Alinhamento do conteúdo à esquerda */
+}
+
+/* Estilo para o contêiner de resumo de conta */
+.acc_summary_container {
+    -fx-padding: 10;                  /* Preenchimento */
+    -fx-spacing: 10;                  /* Espaçamento entre elementos */
+    -fx-alignment: center_left;       /* Alinhamento do conteúdo à esquerda */
+    -fx-border-radius: 10;            /* Raio do canto */
+    -fx-border-color: #999999;        /* Cor da borda */
+    -fx-border-width: 1;              /* Largura da borda */
+    -fx-border-style: dashed;         /* Estilo da borda tracejada */
+}
+
+.acc_summary_container Line {
+    -fx-stroke: #AAAAAA;              /* Cor da linha */
+}
+
+.income_amount {
+    -fx-text-fill: #00AA00;           /* Cor do texto */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+    -fx-font-size: 1.5em;             /* Tamanho da fonte */
+}
+
+.expense_amount {
+    -fx-text-fill: #AA0000;           /* Cor do texto */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+    -fx-font-size: 1.5em;             /* Tamanho da fonte */
+}
+
+/* Visualização de transações */
+.transaction_listview {
+    -fx-background-color: #EEEEEE;    /* Cor de fundo */
+    -fx-border-width: 0 0 0 0;        /* Largura da borda */
+    -fx-border-color: #AAAAAA;        /* Cor da borda */
+}
+
+.transaction_listview .scroll-bar:vertical {
+    -fx-scale-x: 0;                   /* Escala horizontal da barra de rolagem vertical */
+}
+
+.list-cell {
+    -fx-background-color: #EEEEEE;    /* Cor de fundo */
+    -fx-padding: 15 0 15 0;           /* Preenchimento */
+}
+
+/* Visualização de envio de dinheiro */
+.new_trans_container {
+    -fx-background-color: #EEEEEE;    /* Cor de fundo */
+    -fx-padding: 20 10 20 10;         /* Preenchimento */
+    -fx-spacing: 10;                  /* Espaçamento entre elementos */
+    -fx-alignment: center_left;       /* Alinhamento do conteúdo à esquerda */
+}
+
+.new_trans_container Label {
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+    -fx-font-size: 1.3em;             /* Tamanho da fonte */
+}
+
+.new_trans_container TextField {
+    -fx-pref-height: 40;              /* Altura preferencial */
+    -fx-background-color: #FFFFFF;    /* Cor de fundo */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3); /* Efeito de sombra */
+}
+
+.new_trans_container Button {
+    -fx-background-color: linear-gradient(to right, #132A13, #253F25); /* Gradiente de fundo */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);      /* Efeito de sombra */
+    -fx-pref-width: 230;              /* Largura preferencial */
+    -fx-font-size: 1.5em;             /* Tamanho da fonte */
+    -fx-font-family: "Calibri Light";  /* Família da fonte */
+    -fx-text-fill: #FFFFFF;           /* Cor do texto */
+}
+
+/* Efeito de hover para botões na visualização de envio de dinheiro */
+.new_trans_container Button:hover {
+    -fx-cursor: hand;                 /* Cursor de mão ao passar o mouse */
+}

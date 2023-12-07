@@ -1,0 +1,85 @@
+/* Estilo para o contêiner de login */
+.login_container {
+    -fx-background-color: #EEEEEE;    /* Cor de fundo */
+}
+
+/* Estilos para o contêiner do logotipo */
+.login_logo_container {
+    -fx-background-color: #132A13;    /* Cor de fundo */
+    -fx-alignment: center;            /* Alinhamento do conteúdo no centro */
+}
+
+/* Texto no contêiner do logotipo */
+.login_logo_container Text {
+    -fx-font-size: 2em;               /* Tamanho da fonte */
+    -fx-fill: #FFFFFF;                /* Cor do texto */
+}
+
+/* Ícone no contêiner do logotipo */
+.login_logo_container FontAwesomeIconView {
+    -fx-fill: #ECF39E;                /* Cor do ícone */
+}
+
+/* Estilos para o ChoiceBox do seletor de conta */
+.account_selector {
+    -fx-background-color: #ECF39E;    /* Cor de fundo */
+}
+
+/* Estilos para o rótulo do ChoiceBox */
+.account_selector .label {
+    -fx-text-fill: #132A13;           /* Cor do texto */
+    -fx-font-size: 1.1em;             /* Tamanho da fonte */
+}
+
+/* Estilos para a seta do ChoiceBox */
+.account_selector .arrow {
+    -fx-background-color: #132A13;    /* Cor de fundo */
+}
+
+/* Estilos para o menu pop-up do ChoiceBox */
+#choice-box-popup-menu {
+    -fx-background-color: #ECF39E;    /* Cor de fundo */
+}
+
+/* Estilos para o texto do prompt do ChoiceBox */
+#choice-prompt-text {
+    -fx-font-weight: 400;             /* Peso da fonte */
+}
+
+/* Estilos para o contêiner do formulário de login */
+.login_form_container {
+    -fx-spacing: 15;                  /* Espaçamento entre elementos */
+    -fx-alignment: top_left;          /* Alinhamento do conteúdo no topo à esquerda */
+}
+
+/* Estilos para rótulos no formulário de login */
+.login_form_container Label {
+    -fx-font-size: 1.1em;             /* Tamanho da fonte */
+    -fx-font-weight: bold;            /* Peso da fonte em negrito */
+}
+
+/* Estilos para campos de entrada no formulário de login */
+.input_field {
+    -fx-background-color: #FFFFFF;    /* Cor de fundo */
+    -fx-pref-height: 35;              /* Altura preferencial */
+    -fx-font-size: 1.2em;             /* Tamanho da fonte */
+}
+
+/* Estilos para botões no formulário de login */
+.login_form_container Button {
+    -fx-background-color: #132A13;    /* Cor de fundo */
+    -fx-text-fill: #FFFFFF;           /* Cor do texto */
+    -fx-pref-width: 350;              /* Largura preferencial */
+    -fx-pref-height: 30;              /* Altura preferencial */
+    -fx-font-size: 1.2em;             /* Tamanho da fonte */
+}
+
+/* Efeito de hover para botões no formulário de login */
+.login_form_container Button:hover {
+    -fx-cursor: hand;                 /* Cursor de mão ao passar o mouse */
+}
+
+/* Estilo para rótulos de erro */
+.error_lbl {
+    -fx-text-fill: #FF0000;           /* Cor do texto */
+}
