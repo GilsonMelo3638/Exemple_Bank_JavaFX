@@ -2,22 +2,14 @@
 
 <?import javafx.scene.layout.*?>
 
-<!-- O código XML define a estrutura da interface gráfica usando JavaFX FXML. -->
-
-<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <!-- O BorderPane é um contêiner que divide a interface gráfica em cinco áreas: superior, inferior, esquerda, direita e centro. -->
-
+<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
     <left>
-        <!-- Define que o conteúdo seguinte será posicionado à esquerda do BorderPane. -->
         <fx:include source="ClientMenu.fxml"/>
-        <!-- Inclui o conteúdo do arquivo FXML "ClientMenu.fxml" nesta posição. -->
     </left>
 
     <center>
-        <!-- Define que o conteúdo seguinte será posicionado no centro do BorderPane. -->
         <fx:include source="Dashboard.fxml"/>
-        <!-- Inclui o conteúdo do arquivo FXML "Dashboard.fxml" nesta posição. -->
     </center>
 
 </BorderPane>
-        <!-- Fim da definição do BorderPane. -->
