@@ -1,22 +1,23 @@
-
+/* Estilo para o contêiner principal com a classe .clients_container */
 .clients_container {
-    -fx-background-color: #EEEEEE;
+    -fx-background-color: #EEEEEE; /* Cor de fundo em tom de cinza claro */
 }
 
+/* Estilo para elementos do tipo Text dentro do contêiner .clients_container */
 .clients_container Text {
-    -fx-fill: #555555;
-    -fx-font-size: 1.8em;
-    -fx-font-family: "Calibri Light";
+    -fx-fill: #555555; /* Cor do texto em tom de cinza mais escuro */
+    -fx-font-size: 1.8em; /* Tamanho da fonte */
+    -fx-font-family: "Calibri Light"; /* Família da fonte */
 }
 
+/* Estilo para o componente list-view dentro do contêiner .clients_container */
 .clients_container .list-view {
-    -fx-background-color: #EEEEEE;
-    -fx-border-width: 0;
+    -fx-background-color: #EEEEEE; /* Cor de fundo em tom de cinza claro */
+    -fx-border-width: 0; /* Sem borda */
 }
 
+/* Estilo para as células do list-view dentro do contêiner .clients_container */
 .clients_container .list-cell {
-    -fx-background-color: #EEEEEE;
-    -fx-padding: 10 0 10 0;
+    -fx-background-color: #EEEEEE; /* Cor de fundo em tom de cinza claro */
+    -fx-padding: 10 0 10 0; /* Espaçamento interno (topo, direita, baixo, esquerda) */
 }
-
-

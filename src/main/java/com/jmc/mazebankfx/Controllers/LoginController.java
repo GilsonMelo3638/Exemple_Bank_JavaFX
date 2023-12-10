@@ -37,7 +37,7 @@ public class LoginController  implements Initializable {
             Model.getInstance().getViewFactory().showClientWindow();
 
         } else {
-            Model.getInstance().getViewFactory().showClientWindow();
+            Model.getInstance().getViewFactory().showAdminWindow();
         }
     }
 }

@@ -23,7 +23,6 @@ public class ViewFactory {
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
     private AnchorPane createClientView;
     private AnchorPane clientsView;
-    private AnchorPane depositView;
 
     public ViewFactory() {
         this.loginAccountType = AccountType.CLIENT;
@@ -31,14 +30,17 @@ public class ViewFactory {
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }
     public AccountType getLoginAccountType() {
+
         return loginAccountType;
     }
 
     public void setLoginAccountType(AccountType loginAccountType) {
+
         this.loginAccountType = loginAccountType;
     }
 
     public ObjectProperty<ClientMenuOptions> getClientSelectedMenuItem(){
+
         return  clientSelectedMenuItem;
     }
 
@@ -76,11 +78,6 @@ public class ViewFactory {
         return accountsView;
     }
 
-
-    public void showLoginWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
-        createStage(loader);
-    }
     public void showClientWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client.fxml"));
         ClientController clientController = new ClientController();
@@ -104,6 +101,22 @@ public class ViewFactory {
             }
         }
         return createClientView;
+    }
+
+    public AnchorPane getClientsView() {
+        if (clientsView == null) {
+            try {
+                clientsView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Clients.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return clientsView;
+    }
+
+    public void showLoginWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
+        createStage(loader);
     }
 
     public void showAdminWindow() {
