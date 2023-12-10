@@ -1,48 +1,53 @@
-
+/* Define um estilo para o contêiner de visualização de contas */
 .accounts_view_container {
-    -fx-background-color: #EEEEEE;
+    -fx-background-color: #EEEEEE; /* Define a cor de fundo */
 }
 
+/* Define estilos para texto dentro do contêiner */
 .accounts_view_container Text {
-    -fx-fill: #888888;
-    -fx-font-size: 1.4em;
-    -fx-font-family: "Calibri Light";
+    -fx-fill: #888888; /* Define a cor do texto */
+    -fx-font-size: 1.4em; /* Define o tamanho da fonte */
+    -fx-font-family: "Calibri Light"; /* Define a família da fonte */
 }
 
+/* Define estilos para o contêiner VBox dentro do contêiner */
 .accounts_view_container VBox {
-    -fx-border-width: 0 0 0 1;
-    -fx-border-color: #888888;
-    -fx-padding: 10;
-    -fx-spacing: 15;
+    -fx-border-width: 0 0 0 1; /* Define a largura da borda à direita */
+    -fx-border-color: #888888; /* Define a cor da borda */
+    -fx-padding: 10; /* Define o preenchimento interno */
+    -fx-spacing: 15; /* Define o espaçamento entre os filhos */
 }
 
+/* Define estilos para texto dentro do contêiner VBox */
 .accounts_view_container VBox Text {
-    -fx-font-size: 1.2em;
+    -fx-font-size: 1.2em; /* Define o tamanho da fonte */
 }
 
+/* Define estilos para rótulos (Label) dentro do contêiner VBox */
 .accounts_view_container VBox Label {
-    -fx-font-size: 1.2em;
-    -fx-font-weight: bold;
+    -fx-font-size: 1.2em; /* Define o tamanho da fonte */
+    -fx-font-weight: bold; /* Define a espessura da fonte como negrito */
 }
 
+/* Define estilos para campos de texto (TextField) dentro do contêiner */
 .accounts_view_container TextField {
-    -fx-pref-width: 230;
-    -fx-pref-height: 35;
-    -fx-background-color: #FFFFFF;
-    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+    -fx-pref-width: 230; /* Define a largura preferencial */
+    -fx-pref-height: 35; /* Define a altura preferencial */
+    -fx-background-color: #FFFFFF; /* Define a cor de fundo */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3); /* Adiciona sombra */
 }
 
+/* Define estilos para botões (Button) dentro do contêiner */
 .accounts_view_container Button {
-    -fx-background-color: linear-gradient(to right, #132A13, #253F25);
-    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
-    -fx-pref-width: 230;
-    -fx-font-size: 1.5em;
-    -fx-font-family: "Calibri Light";
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: linear-gradient(to right, #132A13, #253F25); /* Define um gradiente de fundo */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3); /* Adiciona sombra */
+    -fx-pref-width: 230; /* Define a largura preferencial */
+    -fx-font-size: 1.5em; /* Define o tamanho da fonte */
+    -fx-font-family: "Calibri Light"; /* Define a família da fonte */
+    -fx-text-fill: #FFFFFF; /* Define a cor do texto */
 }
 
+/* Define estilos para o estado hover (quando o mouse está sobre) dos botões */
 .accounts_view_container Button:hover {
-    -fx-cursor: hand;
+    -fx-cursor: hand; /* Altera o cursor para a mão quando hover */
 }
-
-
