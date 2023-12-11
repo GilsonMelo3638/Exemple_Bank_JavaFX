@@ -1,5 +1,7 @@
 package com.jmc.mazebankfx.Controllers.Client;
 
+import com.jmc.mazebankfx.Models.Model;
+import com.jmc.mazebankfx.Models.Transaction;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +17,11 @@ public class TransactionCellController implements Initializable {
     public Button message_btn;
     public Label amount_lbl;
 
+    private final Transaction transaction;
+
+    public TransactionCellController(Transaction transaction) {
+        this.transaction = transaction;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
