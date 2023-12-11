@@ -1,0 +1,47 @@
+/* Estilo para o contêiner de célula de cliente .client_cell_container */
+.client_cell_container {
+    -fx-background-color: #FFFFFF; /* Cor de fundo branca */
+    -fx-background-radius: 10; /* Raio do canto do contêiner */
+    -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 7); /* Efeito de sombra */
+}
+
+/* Estilo para o ícone de fonte dentro do contêiner .client_cell_container FontAwesomeIconView */
+.client_cell_container FontAwesomeIconView {
+    -fx-fill: #132A13; /* Cor do ícone em tom de verde escuro */
+}
+
+/* Estilo para o contêiner HBox dentro do contêiner .client_cell_container */
+.client_cell_container HBox {
+    -fx-spacing: 15; /* Espaçamento entre os elementos internos */
+    -fx-alignment: Center_left; /* Alinhamento central à esquerda */
+}
+
+/* Estilo para os rótulos (Label) dentro do contêiner HBox .client_cell_container HBox Label */
+.client_cell_container HBox Label {
+    -fx-text-fill: #444444; /* Cor do texto em tom de cinza escuro */
+    -fx-font-family: "Calibri Light"; /* Família da fonte */
+    -fx-font-size: 1.5em; /* Tamanho da fonte */
+}
+
+/* Estilo para o rótulo de exibição de conta .acc_display_lbl */
+.acc_display_lbl {
+    -fx-font-family: Calibri; /* Família da fonte */
+    -fx-font-weight: bold; /* Peso da fonte (negrito) */
+    -fx-font-size: 1.1em; /* Tamanho da fonte */
+}
+
+/* Estilo para o botão de exclusão .delete_btn */
+.delete_btn {
+    -fx-text-fill: #FFFFFF; /* Cor do texto em branco */
+    -fx-background-color: #FF0000; /* Cor de fundo vermelha */
+}
+
+/* Estilo para o ícone de fonte dentro do botão de exclusão .delete_btn FontAwesomeIconView */
+.delete_btn FontAwesomeIconView {
+    -fx-fill: #FFFFFF; /* Cor do ícone em branco */
+}
+
+/* Estilo hover para o botão de exclusão .delete_btn:hover */
+.delete_btn:hover {
+    -fx-cursor: hand; /* Cursor da mão ao passar o mouse sobre o botão */
+}

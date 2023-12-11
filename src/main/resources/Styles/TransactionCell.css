@@ -1,0 +1,59 @@
+/* Estilo para o contêiner de célula .cell_container */
+.cell_container {
+    -fx-background-color: #FFFFFF; /* Cor de fundo branca */
+    -fx-background-radius: 10; /* Raio do canto do contêiner */
+    -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 7); /* Efeito de sombra */
+}
+
+/* Estilo para o contêiner de ícones de transação .trans_icon_container */
+.trans_icon_container {
+    -fx-background-color: #FFFFFF; /* Cor de fundo branca */
+    -fx-alignment: center; /* Centraliza os elementos filhos */
+    -fx-spacing: 5; /* Espaçamento entre os elementos filhos */
+}
+
+/* Estilo para o rótulo de data da transação .trans_date_lbl */
+.trans_date_lbl {
+    -fx-text-fill: #AAAAAA; /* Cor do texto em tom de cinza claro */
+    -fx-font-weight: 700; /* Peso da fonte (negrito) */
+}
+
+/* Estilo para o rótulo de endereço do pagador .trans_pAddress_lbl */
+.trans_pAddress_lbl {
+    -fx-text-fill: #000000; /* Cor do texto em preto */
+    -fx-font-weight: 700; /* Peso da fonte (negrito) */
+}
+
+/* Estilo para a linha dentro do contêiner de célula .cell_container */
+.cell_container Line {
+    -fx-stroke: #EEEEEE; /* Cor da linha em tom de cinza claro */
+}
+
+/* Estilo para o botão de mensagem .message_btn */
+.message_btn {
+    -fx-background-color: #FFFFFF; /* Cor de fundo branca */
+}
+
+/* Estilo para o ícone de fonte dentro do botão de mensagem .message_btn FontAwesomeIconView */
+.message_btn FontAwesomeIconView {
+    -fx-fill: #132A13; /* Cor do ícone em tom de verde escuro */
+}
+
+/* Estilo hover para o botão de mensagem .message_btn:hover */
+.message_btn:hover {
+    -fx-cursor: hand; /* Cursor da mão ao passar o mouse sobre o botão */
+}
+
+/* Estilo para o rótulo de quantidade da transação .trans_amount_lbl */
+.trans_amount_lbl {
+    -fx-background-color: #132A13; /* Cor de fundo em tom de verde escuro */
+    -fx-background-radius: 2; /* Raio do canto do rótulo */
+    -fx-text-fill: #FFFFFF; /* Cor do texto em branco */
+    -fx-padding: 5; /* Preenchimento interno */
+    -fx-font-weight: 700; /* Peso da fonte (negrito) */
+}
+
+/* Estilo para o ícone de fonte dentro do rótulo de quantidade .trans_amount_lbl FontAwesomeIconView */
+.trans_amount_lbl FontAwesomeIconView {
+    -fx-fill: #FFFFFF; /* Cor do ícone em branco */
+}

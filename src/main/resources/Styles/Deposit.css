@@ -1,0 +1,59 @@
+/* Estilo para o contêiner principal com a classe .deposit_container */
+.deposit_container {
+    -fx-background-color: #EEEEEE; /* Cor de fundo em tom de cinza claro */
+}
+
+/* Estilo para o contêiner de busca com a classe .search_box */
+.search_box {
+    -fx-spacing: 10; /* Espaçamento entre os elementos internos */
+    -fx-border-color: #AAAAAA; /* Cor da borda */
+    -fx-border-width: 0 0 1 0; /* Largura da borda (superior, direita, inferior, esquerda) */
+}
+
+/* Estilo para todos os elementos Text */
+Text {
+    -fx-font-family: "Calibri Light"; /* Família da fonte */
+    -fx-font-size: 1.6em; /* Tamanho da fonte */
+    -fx-fill: #555555; /* Cor do texto em tom de cinza mais escuro */
+}
+
+/* Estilo para os campos de texto TextField */
+TextField {
+    -fx-pref-width: 200; /* Largura preferencial */
+    -fx-pref-height: 35; /* Altura preferencial */
+    -fx-background-color: #FFFFFF; /* Cor de fundo branca */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3); /* Efeito de sombra */
+}
+
+/* Estilo para os botões Button */
+Button {
+    -fx-background-color: linear-gradient(to right, #132A13, #253F25); /* Gradiente de fundo do botão */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3); /* Efeito de sombra */
+    -fx-font-size: 1.6em; /* Tamanho da fonte */
+    -fx-text-fill: #FFFFFF; /* Cor do texto */
+    -fx-font-family: "Calibri Light"; /* Família da fonte */
+    -fx-pref-width: 200; /* Largura preferencial */
+}
+
+/* Estilo para o estado hover (quando o mouse passa sobre) do botão Button */
+Button:hover {
+    -fx-cursor: hand; /* Cursor da mão ao passar o mouse sobre o botão */
+}
+
+/* Estilo para o componente list-view */
+.list-view {
+    -fx-background-color: #EEEEEE; /* Cor de fundo em tom de cinza claro */
+    -fx-border-width: 0; /* Sem borda */
+}
+
+/* Estilo para as células do list-view */
+.list-cell {
+    -fx-background-color: #EEEEEE; /* Cor de fundo em tom de cinza claro */
+    -fx-padding: 20 0 20 0; /* Espaçamento interno (topo, direita, baixo, esquerda) */
+}
+
+/* Estilo para o contêiner deposit_box */
+.deposit_box {
+    -fx-spacing: 20; /* Espaçamento entre os elementos internos */
+    -fx-padding: 20; /* Preenchimento interno */
+}
