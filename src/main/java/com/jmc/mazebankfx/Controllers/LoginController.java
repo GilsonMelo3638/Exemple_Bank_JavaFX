@@ -13,7 +13,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController  implements Initializable {
+public class LoginController implements Initializable {
+
+    // Interface Elements
     public ChoiceBox<AccountType> acc_selector;
     public Label payee_address_lbl;
     public TextField payee_address_fld;
@@ -21,33 +23,67 @@ public class LoginController  implements Initializable {
     public Button login_btn;
     public Label error_lbl;
 
-
+    // Método de inicialização da interface
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Configuração do ChoiceBox para selecionar o tipo de conta (CLIENT ou ADMIN)
         acc_selector.setItems(FXCollections.observableArrayList(AccountType.CLIENT, AccountType.ADMIN));
         acc_selector.setValue(Model.getInstance().getViewFactory().getLoginAccountType());
-        acc_selector.valueProperty().addListener(observable -> Model.getInstance().getViewFactory().setLoginAccountType(acc_selector.getValue()));
+
+        // Adiciona um ouvinte para alterações na seleção do tipo de conta
+        acc_selector.valueProperty().addListener(observable -> setAcc_selector());
+
+        // Adiciona um ouvinte para o evento de clique no botão de login
         login_btn.setOnAction(event -> onLogin());
     }
 
+    // Método chamado quando o botão de login é pressionado
     private void onLogin() {
+        // Obtém a referência à janela atual
         Stage stage = (Stage) error_lbl.getScene().getWindow();
+
+        // Verifica se é uma conta de cliente
         if (Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.CLIENT) {
-            // Evaluate Client Login Credentials
+            // Avalia as credenciais de login do cliente
             Model.getInstance().evaluateClientCred(payee_address_fld.getText(), password_fld.getText());
+
+            // Se as credenciais de login forem bem-sucedidas, exibe a janela do cliente e fecha a janela de login
             if (Model.getInstance().getClientLoginSuccessFlag()) {
                 Model.getInstance().getViewFactory().showClientWindow();
-                // Close the login stage
                 Model.getInstance().getViewFactory().closeStage(stage);
             } else {
+                // Se as credenciais de login falharem, limpa os campos e exibe uma mensagem de erro
                 payee_address_fld.setText("");
                 password_fld.setText("");
-                error_lbl.setText("No Such Login Credentials.");
+                error_lbl.setText("Credenciais de login incorretas.");
             }
         } else {
-                      // Close the login stage
-                Model.getInstance().getViewFactory().closeStage(stage);
+            // Avalia as credenciais de login do administrador
+            Model.getInstance().evaluateAdminCred(payee_address_fld.getText(), password_fld.getText());
 
+            // Se as credenciais de login forem bem-sucedidas, exibe a janela do administrador e fecha a janela de login
+            if (Model.getInstance().getAdminLoginSuccessFlag()) {
+                Model.getInstance().getViewFactory().showAdminWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
+            } else {
+                // Se as credenciais de login falharem, limpa os campos e exibe uma mensagem de erro
+                payee_address_fld.setText("");
+                password_fld.setText("");
+                error_lbl.setText("Credenciais de login incorretas");
+            }
+        }
+    }
+
+    // Método chamado quando o tipo de conta é alterado no ChoiceBox
+    private void setAcc_selector() {
+        // Atualiza o tipo de conta no modelo
+        Model.getInstance().getViewFactory().setLoginAccountType(acc_selector.getValue());
+
+        // Altera o rótulo de endereço do beneficiário de acordo com o tipo de conta selecionado
+        if (acc_selector.getValue() == AccountType.ADMIN) {
+            payee_address_lbl.setText("Nome de Usuário:");
+        } else {
+            payee_address_lbl.setText("Endereço do Beneficiário:");
         }
     }
 }
