@@ -4,6 +4,8 @@ module com.jmc.mazebankfx {
     requires org.controlsfx.controls;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires de.jensd.fx.glyphs.fontawesome;
+
 
     opens com.jmc.mazebankfx to javafx.fxml;
     exports com.jmc.mazebankfx;

@@ -165,8 +165,10 @@ public class Model {
             e.printStackTrace();
         }
     }
+    public ObservableList<Client> getClients() {
+        return clients;
+    }
 
-    // Método para obter clientes do banco de dados e popular a lista de clientes
     public void setClients() {
         CheckingAccount checkingAccount;
         SavingsAccount savingsAccount;

@@ -1,6 +1,7 @@
 package com.jmc.mazebankfx.Controllers.Client;
 
 import com.jmc.mazebankfx.Models.Model;
+import com.jmc.mazebankfx.Models.Transaction;
 import com.jmc.mazebankfx.Views.TransactionCellFactory;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -35,6 +37,7 @@ public class DashboardController implements Initializable {
         transaction_listview.setItems(Model.getInstance().getLatestTransactions());
         // Define a fábrica de células para a ListView usando a classe TransactionCellFactory
         transaction_listview.setCellFactory(e -> new TransactionCellFactory());
+        send_money_btn.setOnAction(event -> onSendMoney());
     }
 
     // Método para vincular dados aos elementos do layout
@@ -52,6 +55,46 @@ public class DashboardController implements Initializable {
         savings_acc_num.textProperty().bind(Model.getInstance().getClient().savingsAccountProperty().get().accountNumberProperty());
     }
 
+    /**
+     * Método para processar a transferência de dinheiro.
+     */
+    private void onSendMoney() {
+        // Obter informações dos campos de entrada
+        String receiver = payee_fld.getText();
+        double amount = Double.parseDouble(amount_fld.getText());
+        String message = message_fld.getText();
+        String sender = Model.getInstance().getClient().pAddressProperty().get();
+
+        // Buscar informações do destinatário no banco de dados
+        ResultSet resultSet = Model.getInstance().getDatabaseDriver().searchClient(receiver);
+        try {
+            // Verificar se o destinatário foi encontrado
+            if (resultSet.isBeforeFirst()) {
+                // Atualizar o saldo do destinatário no banco de dados (adicionar o valor transferido)
+                Model.getInstance().getDatabaseDriver().updateBalance(receiver, amount, "ADD");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Subtrair o valor transferido da conta poupança do remetente no banco de dados
+        Model.getInstance().getDatabaseDriver().updateBalance(sender, amount, "SUB");
+
+        // Atualizar o saldo da conta poupança no objeto do cliente
+        Model.getInstance().getClient().savingsAccountProperty().get().setBalance(
+                Model.getInstance().getDatabaseDriver().getSavingsAccountBalance(sender)
+        );
+
+        // Registrar a nova transação no banco de dados
+        Model.getInstance().getDatabaseDriver().newTransaction(sender, receiver, amount, message);
+
+        // Limpar os campos de entrada após a conclusão da transferência
+        payee_fld.setText("");
+        amount_fld.setText("");
+        message_fld.setText("");
+    }
+
+
     // Método para inicializar a lista de transações mais recentes
     private void initLatestTransactionsList() {
         // Verifica se a lista de transações mais recentes está vazia
@@ -59,6 +102,23 @@ public class DashboardController implements Initializable {
             // Inicializa a lista de transações mais recentes no modelo
             Model.getInstance().setLatestTransactions();
         }
+    }
+
+    private void accountSummary() {
+        double income = 0;
+        double expenses = 0;
+        if (Model.getInstance().getAllTransactions().isEmpty()) {
+            Model.getInstance().setAllTransactions();
+        }
+        for (Transaction transaction : Model.getInstance().getAllTransactions()) {
+            if (transaction.senderProperty().get().equals(Model.getInstance().getClient().pAddressProperty().get())) {
+                expenses = expenses + transaction.amountProperty().get();
+            } else {
+                income = income + transaction.amountProperty().get();
+            }
+        }
+        income_lbl.setText("+ $" + income);
+        expense_lbl.setText("- $" + expenses);
     }
 
 }
