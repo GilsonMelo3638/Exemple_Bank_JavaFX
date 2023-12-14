@@ -36,6 +36,7 @@ public class TransactionCellController implements Initializable {
         receiver_lbl.textProperty().bind(transaction.receiverProperty());
         amount_lbl.textProperty().bind(transaction.amountProperty().asString());
         trans_date_lbl.textProperty().bind(transaction.dateProperty().asString());
+        message_btn.setOnAction(event -> Model.getInstance().getViewFactory().showMessageWindow(transaction.senderProperty().get(), transaction.messageProperty().get()));
 
         // Configura os ícones com base na direção da transação
         transactionIcons();
