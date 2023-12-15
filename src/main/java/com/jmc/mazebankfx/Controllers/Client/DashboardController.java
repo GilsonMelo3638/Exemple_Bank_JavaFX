@@ -104,21 +104,34 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * Método para gerar um resumo da conta exibindo o total de receitas e despesas.
+     */
     private void accountSummary() {
+        // Inicializa variáveis para armazenar o total de receitas e despesas
         double income = 0;
         double expenses = 0;
+
+        // Verifica se a lista de transações está vazia e a preenche se necessário
         if (Model.getInstance().getAllTransactions().isEmpty()) {
             Model.getInstance().setAllTransactions();
         }
+
+        // Itera sobre todas as transações do cliente
         for (Transaction transaction : Model.getInstance().getAllTransactions()) {
+            // Verifica se o cliente é o remetente da transação (despesa)
             if (transaction.senderProperty().get().equals(Model.getInstance().getClient().pAddressProperty().get())) {
-                expenses = expenses + transaction.amountProperty().get();
+                expenses += transaction.amountProperty().get();
             } else {
-                income = income + transaction.amountProperty().get();
+                // Caso contrário, o cliente é o destinatário da transação (receita)
+                income += transaction.amountProperty().get();
             }
         }
+
+        // Atualiza os rótulos na interface do usuário com os totais calculados
         income_lbl.setText("+ $" + income);
         expense_lbl.setText("- $" + expenses);
     }
+
 
 }

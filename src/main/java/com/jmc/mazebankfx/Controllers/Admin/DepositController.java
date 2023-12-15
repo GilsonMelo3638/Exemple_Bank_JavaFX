@@ -39,17 +39,35 @@ public class DepositController implements Initializable {
     }
 
     // Método chamado ao clicar no botão de depósito
+    /**
+     * Método para processar o depósito na conta poupança do cliente.
+     */
     private void onDeposit() {
-        // Obtém o valor do depósito do campo de texto
-        double amount = Double.parseDouble(amount_fld.getText());
-        // Calcula o novo saldo adicionando o valor do depósito ao saldo atual da conta poupança do cliente
-        double newBalance = amount + client.savingsAccountProperty().get().balanceProperty().get();
-        // Realiza o depósito se o campo de valor não estiver vazio
-        if (amount_fld.getText() != null) {
-            Model.getInstance().getDatabaseDriver().depositSavings(client.pAddressProperty().get(), newBalance);
+        try {
+            // Obtém o valor do depósito do campo de texto
+            double amount = Double.parseDouble(amount_fld.getText());
+
+            // Calcula o novo saldo adicionando o valor do depósito ao saldo atual da conta poupança do cliente
+            double newBalance = amount + client.savingsAccountProperty().get().balanceProperty().get();
+
+            // Verifica se o campo de valor não está vazio antes de realizar o depósito
+            if (!amount_fld.getText().isEmpty()) {
+                // Realiza o depósito na conta poupança do cliente no banco de dados
+                Model.getInstance().getDatabaseDriver().depositSavings(client.pAddressProperty().get(), newBalance);
+            }
+
+            emptyFields();  // Limpa os campos após o depósito
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            // Trata exceção se o valor inserido no campo não for um número válido
+            // Pode ser adicionada uma lógica adicional para informar o usuário sobre o erro
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Trata exceções gerais, se houver, durante o processamento do depósito
+            // Pode ser adicionada uma lógica adicional para informar o usuário sobre o erro
         }
-        emptyFields();  // Limpa os campos após o depósito
     }
+
 
     // Método para limpar os campos de texto
     private void emptyFields() {

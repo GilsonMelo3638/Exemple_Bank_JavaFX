@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para a célula de exibição de transação em uma ListView.
+ */
 public class TransactionCellController implements Initializable {
     // Elementos do layout FXML
     public FontAwesomeIconView in_icon;      // Ícone de transação de entrada
@@ -36,7 +39,10 @@ public class TransactionCellController implements Initializable {
         receiver_lbl.textProperty().bind(transaction.receiverProperty());
         amount_lbl.textProperty().bind(transaction.amountProperty().asString());
         trans_date_lbl.textProperty().bind(transaction.dateProperty().asString());
-        message_btn.setOnAction(event -> Model.getInstance().getViewFactory().showMessageWindow(transaction.senderProperty().get(), transaction.messageProperty().get()));
+
+        // Configura o botão de mensagem para exibir uma janela de mensagem ao ser clicado
+        message_btn.setOnAction(event ->
+                Model.getInstance().getViewFactory().showMessageWindow(transaction.senderProperty().get(), transaction.messageProperty().get()));
 
         // Configura os ícones com base na direção da transação
         transactionIcons();

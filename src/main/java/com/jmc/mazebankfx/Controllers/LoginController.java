@@ -13,20 +13,23 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para a interface de login.
+ */
 public class LoginController implements Initializable {
 
-    // Interface Elements
-    public ChoiceBox<AccountType> acc_selector;
-    public Label payee_address_lbl;
-    public TextField payee_address_fld;
-    public TextField password_fld;
-    public Button login_btn;
-    public Label error_lbl;
+    // Elementos da interface
+    public ChoiceBox<AccountType> acc_selector;     // Caixa de seleção para o tipo de conta (CLIENT ou ADMIN)
+    public Label payee_address_lbl;                 // Rótulo para o endereço do beneficiário ou nome de usuário
+    public TextField payee_address_fld;             // Campo de texto para o endereço do beneficiário ou nome de usuário
+    public TextField password_fld;                  // Campo de texto para a senha
+    public Button login_btn;                        // Botão de login
+    public Label error_lbl;                         // Rótulo para mensagens de erro
 
-    // Método de inicialização da interface
+    // Método chamado durante a inicialização da interface
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Configuração do ChoiceBox para selecionar o tipo de conta (CLIENT ou ADMIN)
+        // Configura o ChoiceBox para selecionar o tipo de conta (CLIENT ou ADMIN)
         acc_selector.setItems(FXCollections.observableArrayList(AccountType.CLIENT, AccountType.ADMIN));
         acc_selector.setValue(Model.getInstance().getViewFactory().getLoginAccountType());
 

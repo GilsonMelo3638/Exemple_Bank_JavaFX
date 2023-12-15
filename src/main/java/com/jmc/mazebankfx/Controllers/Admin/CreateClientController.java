@@ -48,25 +48,41 @@ public class CreateClientController implements Initializable {
     /**
      * Adiciona ouvintes de eventos aos elementos da interface para lidar com as ações do usuário.
      */
+    /**
+     * Método para adicionar ouvintes aos elementos de interface, respondendo a eventos específicos.
+     */
     private void adicionarOuvintes() {
+        // Ouvinte para o botão de criação de cliente
         create_client_btn.setOnAction(evento -> criarCliente());
+
+        // Ouvinte para a caixa de seleção do endereço do beneficiário (payee)
         pAddress_box.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
+            // Se a caixa de seleção foi marcada
             if (newVal) {
+                // Cria o endereço do beneficiário (payee)
                 payeeAddress = criarPayeeAddress();
+                // Executa ações específicas após a criação do endereço do beneficiário
                 aoCriarPayeeAddress();
             }
         });
+
+        // Ouvinte para a caixa de seleção da conta corrente
         ch_acc_box.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
+            // Se a caixa de seleção foi marcada, define a flag de criação de conta corrente como verdadeira
             if (newVal) {
                 createCheckingAccountFlag = true;
             }
         });
+
+        // Ouvinte para a caixa de seleção da conta poupança
         sv_acc_box.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
+            // Se a caixa de seleção foi marcada, define a flag de criação de conta poupança como verdadeira
             if (newVal) {
                 createSavingsAccountFlag = true;
             }
         });
     }
+
 
     /**
      * Manipula o clique no botão de criar cliente.
