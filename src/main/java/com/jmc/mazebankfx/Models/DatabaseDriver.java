@@ -1,5 +1,5 @@
 package com.jmc.mazebankfx.Models;
-
+// Importação de classes necessárias do Java
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ public class DatabaseDriver {
     // Construtor que estabelece a conexão com o banco de dados SQLite
     public DatabaseDriver() {
         try {
-            this.conn = DriverManager.getConnection("jdbc:sqlite:mazebank.db");
+            this.conn = DriverManager.getConnection("jdbc:sqlite:mazebank.db"); // Conexão com o banco de dados SQLite
         } catch (SQLException e) {
             e.printStackTrace();
         }

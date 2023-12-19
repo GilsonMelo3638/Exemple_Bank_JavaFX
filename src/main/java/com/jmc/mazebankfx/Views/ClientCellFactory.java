@@ -7,7 +7,6 @@ import javafx.scene.control.ListCell;
 
 // Classe que define a fábrica de células para a exibição de clientes em uma lista
 public class ClientCellFactory extends ListCell<Client> {
-
     // Método chamado sempre que uma célula precisa ser atualizada
     @Override
     protected void updateItem(Client client, boolean empty) {
