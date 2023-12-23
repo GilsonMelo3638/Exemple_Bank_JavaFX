@@ -15,51 +15,96 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * A classe ViewFactory é responsável por criar e gerenciar várias visualizações na aplicação Maze Bank.
+ * Inclui métodos para exibir janelas de login, janelas de cliente e janelas de administrador, bem como obter
+ * visualizações específicas para diferentes partes da aplicação.
+ */
 public class ViewFactory {
-    // Tipo de conta usado para o login (CLIENT ou ADMIN)
-    private AccountType loginAccountType;
 
-    // Seletor de itens de menu para o cliente
-    private final ObjectProperty<ClientMenuOptions> clientSelectedMenuItem;
+    /* Paineis de visualização: */
+    private AnchorPane dashboardView; //controle do cliente.
+    private AnchorPane transactionsView; //transações do cliente.
+    private AnchorPane accountsView; //contas do cliente.
+    private AnchorPane createClientView; //criação de clientes do administrador.
+    private AnchorPane clientsView; //clientes do administrador.
+    private AnchorPane depositView; //depósito do administrador.
+    private AccountType loginAccountType; // Representa o tipo de conta utilizado para o login (CLIENT ou ADMIN).
+    private final ObjectProperty<ClientMenuOptions> clientSelectedMenuItem; // Propriedade que mantém o item de menu selecionado pelo cliente(DASHBOARD, TRANSACTIONS, ACCOUNTS).
+    private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem; //Propriedade que mantém o item de menu selecionado pelo administrador(CREATE_CLIENT, CLIENTS, DEPOSIT).
 
-    // Vistas do cliente
-    private AnchorPane dashboardView;
-    private AnchorPane transactionsView;
-    private AnchorPane accountsView;
 
-    // Seletor de itens de menu para o administrador
-    private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
-
-    // Vistas do administrador
-    private AnchorPane createClientView;
-    private AnchorPane clientsView;
-    private AnchorPane depositView;
-
-    // Construtor
+    /**
+     * Construtor para a classe ViewFactory.
+     * Inicializa o tipo de conta padrão como CLIENT e configura as propriedades para os itens de menu selecionados
+     * tanto para clientes quanto para administradores.
+     */
     public ViewFactory() {
         this.loginAccountType = AccountType.CLIENT;
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }
 
-    // Métodos para obter e definir o tipo de conta de login
+    /**
+     * Obtém o tipo de conta de login atual.
+     *
+     * @return O tipo de conta de login atual (CLIENT ou ADMIN).
+     */
     public AccountType getLoginAccountType() {
         return loginAccountType;
     }
 
+    /**
+     * Define o tipo de conta de login.
+     *
+     * @param loginAccountType O tipo de conta a ser definido (CLIENT ou ADMIN).
+     */
     public void setLoginAccountType(AccountType loginAccountType) {
         this.loginAccountType = loginAccountType;
     }
 
-    /*
-     * Seção de Vistas do Cliente
-     * */
-    // Obtém a propriedade do item de menu selecionado pelo cliente
+    /**
+     * Obtém a propriedade que representa o item de menu selecionado para clientes.
+     *
+     * @return A propriedade para o item de menu de cliente selecionado.
+     */
     public ObjectProperty<ClientMenuOptions> getClientSelectedMenuItem() {
         return clientSelectedMenuItem;
     }
 
-    // Obtém a vista do painel de controle do cliente
+    /**
+     * Obtém a propriedade que representa o item de menu selecionado para administradores.
+     *
+     * @return A propriedade para o item de menu de administração selecionado.
+     */
+    public ObjectProperty<AdminMenuOptions> getAdminSelectedMenuItem() {
+        return adminSelectedMenuItem;
+    }
+
+    /**
+     * Exibe a janela de login carregando o arquivo FXML associado e criando um palco.
+     */
+    public void showLoginWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
+        createStage(loader);
+    }
+
+    /**
+     * Exibe a janela principal do cliente carregando o arquivo FXML associado, criando um controlador de cliente
+     * e criando um palco.
+     */
+    public void showClientWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client.fxml"));
+        ClientController clientController = new ClientController();
+        loader.setController(clientController);
+        createStage(loader);
+    }
+
+    /**
+     * Obtém a visualização do painel de controle do cliente.
+     *
+     * @return A visualização do painel de controle do cliente.
+     */
     public AnchorPane getDashboardView() {
         if (dashboardView == null) {
             try {
@@ -71,7 +116,11 @@ public class ViewFactory {
         return dashboardView;
     }
 
-    // Obtém a vista do painel de transações do cliente
+    /**
+     * Obtém a visualização do painel de transações do cliente.
+     *
+     * @return A visualização do painel de transações do cliente.
+     */
     public AnchorPane getTransactionsView() {
         if (transactionsView == null) {
             try {
@@ -83,7 +132,11 @@ public class ViewFactory {
         return transactionsView;
     }
 
-    // Obtém a vista do painel de contas do cliente
+    /**
+     * Obtém a visualização do painel de contas do cliente.
+     *
+     * @return A visualização do painel de contas do cliente.
+     */
     public AnchorPane getAccountsView() {
         if (accountsView == null) {
             try {
@@ -95,23 +148,22 @@ public class ViewFactory {
         return accountsView;
     }
 
-    // Exibe a janela principal do cliente
-    public void showClientWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client.fxml"));
-        ClientController clientController = new ClientController();
-        loader.setController(clientController);
+    /**
+     * Exibe a janela principal do administrador carregando o arquivo FXML associado, criando um controlador de administração
+     * e criando um palco.
+     */
+    public void showAdminWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Admin.fxml"));
+        AdminController controller = new AdminController();
+        loader.setController(controller);
         createStage(loader);
     }
 
-    /*
-     * Seção de Vistas do Administrador
-     * */
-    // Obtém a propriedade do item de menu selecionado pelo administrador
-    public ObjectProperty<AdminMenuOptions> getAdminSelectedMenuItem() {
-        return adminSelectedMenuItem;
-    }
-
-    // Obtém a vista do painel de criação de clientes do administrador
+    /**
+     * Obtém a visualização do painel de criação de cliente do administrador.
+     *
+     * @return A visualização do painel de criação de cliente do administrador.
+     */
     public AnchorPane getCreateClientView() {
         if (createClientView == null) {
             try {
@@ -123,7 +175,11 @@ public class ViewFactory {
         return createClientView;
     }
 
-    // Obtém a vista do painel de visualização de clientes do administrador
+    /**
+     * Obtém a visualização do painel de clientes do administrador.
+     *
+     * @return A visualização do painel de clientes do administrador.
+     */
     public AnchorPane getClientsView() {
         if (clientsView == null) {
             try {
@@ -135,7 +191,11 @@ public class ViewFactory {
         return clientsView;
     }
 
-    // Obtém a vista do painel de depósito do administrador
+    /**
+     * Obtém a visualização do painel de depósito do administrador.
+     *
+     * @return A visualização do painel de depósito do administrador.
+     */
     public AnchorPane getDepositView() {
         if (depositView == null) {
             try {
@@ -147,21 +207,12 @@ public class ViewFactory {
         return depositView;
     }
 
-    // Exibe a janela principal do administrador
-    public void showAdminWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Admin.fxml"));
-        AdminController controller = new AdminController();
-        loader.setController(controller);
-        createStage(loader);
-    }
-
-    // Exibe a janela de login
-    public void showLoginWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
-        createStage(loader);
-    }
-
-    // Exibe uma janela de mensagem
+    /**
+     * Exibe uma janela de mensagem.
+     *
+     * @param pAddress    O endereço do remetente da mensagem.
+     * @param messageText O texto da mensagem.
+     */
     public void showMessageWindow(String pAddress, String messageText) {
         StackPane pane = new StackPane();
         HBox hBox = new HBox(5);
@@ -175,12 +226,16 @@ public class ViewFactory {
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Images/icon.png"))));
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Message");
+        stage.setTitle("Mensagem");
         stage.setScene(scene);
         stage.show();
     }
 
-    // Cria e exibe uma nova janela com base no carregador FXML fornecido
+    /**
+     * Cria e exibe uma nova janela com base no carregador FXML fornecido.
+     *
+     * @param loader O carregador FXML associado à janela.
+     */
     private void createStage(FXMLLoader loader) {
         Scene scene = null;
         try {
@@ -196,7 +251,11 @@ public class ViewFactory {
         stage.show();
     }
 
-    // Fecha a janela fornecida
+    /**
+     * Fecha o palco fornecido.
+     *
+     * @param stage O palco a ser fechado.
+     */
     public void closeStage(Stage stage) {
         stage.close();
     }
